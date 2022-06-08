@@ -115,6 +115,15 @@ namespace EarTrumpet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Additional Settings.
+        /// </summary>
+        public static string AdditionalSettingsTitle {
+            get {
+                return ResourceManager.GetString("AdditionalSettingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set up hotkeys and automation.
         /// </summary>
         public static string AddonDescriptionText {
@@ -318,6 +327,24 @@ namespace EarTrumpet.Properties {
         public static string BoolValue_True {
             get {
                 return ResourceManager.GetString("BoolValue_True", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Determines whether when changing the default audio device, it should also be set as default communication device..
+        /// </summary>
+        public static string ChangeCommDeviceDescription {
+            get {
+                return ResourceManager.GetString("ChangeCommDeviceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Communication Device.
+        /// </summary>
+        public static string ChangeCommDeviceTitle {
+            get {
+                return ResourceManager.GetString("ChangeCommDeviceTitle", resourceCulture);
             }
         }
         
@@ -1314,7 +1341,7 @@ namespace EarTrumpet.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Absolute Volume Down.
+        ///   Looks up a localized string similar to Decrease volume for all devices.
         /// </summary>
         public static string SettingsAbsoluteVolumeDownText {
             get {
@@ -1323,7 +1350,7 @@ namespace EarTrumpet.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Absolute Volume Up.
+        ///   Looks up a localized string similar to Increase volume for all devices.
         /// </summary>
         public static string SettingsAbsoluteVolumeUpText {
             get {
@@ -1332,7 +1359,7 @@ namespace EarTrumpet.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar à General.
+        ///   Looks up a localized string similar to General.
         /// </summary>
         public static string SettingsCategoryTitle {
             get {
