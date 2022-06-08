@@ -10,6 +10,7 @@ namespace EarTrumpet.UI.ViewModels
     class SettingsViewModel : BindableBase, ISettingsViewModel
     {
         public string Title { get; private set; }
+        
         public ICommand GoHome { get; }
         public BackstackViewModel Backstack { get; } = new BackstackViewModel();
         public ObservableCollection<SettingsCategoryViewModel> Categories { get; private set; }

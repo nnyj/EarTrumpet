@@ -357,18 +357,35 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:EarTrumpetAdditionalSettingsViewModel}">
             <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal">
+                
+                <!-- CHANGE COMM DEVICE -->
+                <WrapPanel Margin="0, 0, 0, 10">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock 
+                            FontSize="15"
+                            Text="{x:Static resx:Resources.ChangeCommDeviceTitle}" />
+                        <CheckBox 
+                            IsChecked="{Binding Path=ChangeCommDevice}" />
+                    </StackPanel>
+                    <TextBlock  
+                        Theme:Brush.Foreground="GrayText"
+                        FontSize="12"
+                        TextWrapping="Wrap"
+                        Text="{x:Static resx:Resources.ChangeCommDeviceDescription}" />
+                </WrapPanel>
+                
+                <!-- RESTORE HIDDEN APPS -->
+                <WrapPanel>
                     <TextBlock 
                         FontSize="15"
-                        Text="{x:Static resx:Resources.ChangeCommDeviceTitle}" />
-                    <CheckBox 
-                        IsChecked="{Binding Path=ChangeCommDevice}" />
-                </StackPanel>
-                <TextBlock  
-                    Theme:Brush.Foreground="GrayText"
-                    FontSize="12"
-                    TextWrapping="Wrap"
-                    Text="{x:Static resx:Resources.ChangeCommDeviceDescription}" />
+                        Text="{x:Static resx:Resources.RestoreHiddenAppsTitle}" />
+                    <Button Content="{x:Static resx:Resources.RestoreHiddenAppsButton}" Command="{Binding RestoreHiddenApps}"/>
+                    <TextBlock  
+                        Theme:Brush.Foreground="GrayText"
+                        FontSize="12"
+                        TextWrapping="Wrap"
+                        Text="{x:Static resx:Resources.RestoreHiddenAppsDescription}" />
+                </WrapPanel>
             </StackPanel>
         </DataTemplate>
         <Style x:Key="SettingsListViewItem" TargetType="{x:Type ListViewItem}">

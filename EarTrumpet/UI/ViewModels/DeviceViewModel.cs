@@ -72,7 +72,11 @@ namespace EarTrumpet.UI.ViewModels
 
             foreach (var session in _device.Groups)
             {
-                Apps.AddSorted(new AppItemViewModel(this, session), AppItemViewModel.CompareByExeName);
+                var appItem = new AppItemViewModel(this, session);
+                if (!appItem.IsHidden)
+                {
+                    Apps.AddSorted(new AppItemViewModel(this, session), AppItemViewModel.CompareByExeName);
+                }
             }
 
             UpdateMasterVolumeIcon();
@@ -188,7 +192,10 @@ namespace EarTrumpet.UI.ViewModels
                 }
             }
 
-            Apps.AddSorted(newSession, AppItemViewModel.CompareByExeName);
+            if(!newSession.IsHidden)
+            {
+                Apps.AddSorted(newSession, AppItemViewModel.CompareByExeName);
+            }
         }
 
         public void AppMovingToThisDevice(TemporaryAppItemViewModel app)

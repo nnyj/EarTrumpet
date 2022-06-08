@@ -60,6 +60,7 @@ namespace EarTrumpet.UI.ViewModels
         public bool IsExpanded { get; }
         public bool IsDesktopApp { get; }
         public bool IsMovable { get; }
+        public bool IsHidden { get; }
         public float PeakValue1 { get; }
         public float PeakValue2 { get; }
         public string PersistedOutputDevice => ((IAudioDeviceManagerWindowsAudio)_deviceManager).GetDefaultEndPoint(ProcessId);
@@ -99,6 +100,7 @@ namespace EarTrumpet.UI.ViewModels
             IconPath = app.IconPath;
             IsDesktopApp = app.IsDesktopApp;
             IsMovable = app.IsMovable;
+            IsHidden = app.IsHidden;
             IsExpanded = isChild;
             PeakValue1 = 0;
             PeakValue2 = 0;

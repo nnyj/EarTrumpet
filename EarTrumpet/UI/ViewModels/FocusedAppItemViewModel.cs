@@ -1,8 +1,10 @@
 ﻿using EarTrumpet.Extensibility.Hosting;
 using EarTrumpet.UI.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using EarTrumpet.DataModel.Storage;
 
 namespace EarTrumpet.UI.ViewModels
 {
@@ -20,6 +22,32 @@ namespace EarTrumpet.UI.ViewModels
             App = app;
 
             Toolbar = new ObservableCollection<ToolbarItemViewModel>();
+            
+            // Option to Hide an App
+            Toolbar.Add(new ToolbarItemViewModel
+            {
+                GlyphFontSize = 10,
+                DisplayName = "Hide", // Properties.Resources.CloseButtonAccessibleText,
+                Glyph = "\uE107",
+                Command = new RelayCommand(() =>
+                {
+                    // Add To HiddenApps in Settings
+                    var Key = "HIDDEN_APPS";
+                    var hiddenApps = StorageFactory.GetSettings().Get(Key, new List<string>());
+                    hiddenApps.Add(App.ExeName);
+                    StorageFactory.GetSettings().Set(Key, hiddenApps);
+
+                    // Remove in Memory from Device-App-Collections
+                    foreach (var device in parent.AllDevices)
+                    {
+                        var appsToRemove = device.Apps.Where(_app => app.ExeName.Equals(_app.ExeName)).ToList();
+                        foreach (var _app in appsToRemove) device.Apps.Remove(_app);
+                    }
+
+                    RequestClose.Invoke();
+                })
+            });
+            
             Toolbar.Add(new ToolbarItemViewModel
             {
                 GlyphFontSize = 10,

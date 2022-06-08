@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Media;
+using EarTrumpet.DataModel.Storage;
 
 namespace EarTrumpet.UI.ViewModels
 {
@@ -52,6 +53,7 @@ namespace EarTrumpet.UI.ViewModels
                 return null;
             }
         }
+        public bool IsHidden { get; private set; }
 
         private readonly IAudioDeviceSession _session;
         private readonly WeakReference<DeviceViewModel> _parent;
@@ -59,6 +61,8 @@ namespace EarTrumpet.UI.ViewModels
         internal AppItemViewModel(DeviceViewModel parent, IAudioDeviceSession session, bool isChild = false) : base(session)
         {
             IsExpanded = isChild;
+            IsHidden = StorageFactory.GetSettings().Get("HIDDEN_APPS", new List<string>()).Contains(session.ExeName);
+            
             _session = session;
             _session.PropertyChanged += Session_PropertyChanged;
             _parent = new WeakReference<DeviceViewModel>(parent);
